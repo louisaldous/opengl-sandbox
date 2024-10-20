@@ -24,7 +24,7 @@
     <ClCompile Include="src\Shader.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="contrib\src\std_impl.cpp">
+    <ClCompile Include="contrib\src\stb_impl.cpp">
       <Filter>contrib\src</Filter>
     </ClCompile>
   </ItemGroup>

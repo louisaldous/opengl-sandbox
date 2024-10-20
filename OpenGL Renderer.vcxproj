@@ -89,7 +89,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="contrib\src\glad.c" />
-    <ClCompile Include="contrib\src\std_impl.cpp" />
+    <ClCompile Include="contrib\src\stb_impl.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
