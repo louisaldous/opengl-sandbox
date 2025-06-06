@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 class Camera
 {
@@ -18,11 +19,9 @@ public:
     static Camera *GetInstance();
 
 protected:
-    float m_pitch;
-    float m_yaw;
-
     glm::vec3 m_cameraPos;
     glm::vec3 m_cameraFront;
+    glm::quat m_orientation;
 };
 
 extern glm::vec3 g_upVector;

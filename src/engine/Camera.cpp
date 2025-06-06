@@ -1,5 +1,7 @@
 #include "Camera.h"
 
+#include <iostream>
+
 #include "glm/gtc/matrix_transform.hpp"
 #include "glfw3.h"
 
@@ -8,25 +10,25 @@
 glm::vec3 g_upVector( 0.0f, 1.0f, 0.0f );
 
 Camera::Camera()
-:   m_pitch( 0.0f ),
-    m_yaw( 0.0f ),
+:   m_orientation( 1.0f, 0.0f, 0.0f, 0.0f ),
     m_cameraFront( 0.0f, 0.0f, -1.0f ),
     m_cameraPos( 0.0f, 0.0f, 0.0f )
 {}
 
 void Camera::NotifyMouseMovement( glm::vec2 const &mouseDelta )
 {
-    m_yaw += (float)mouseDelta.x * MOUSE_SENS;
-    m_pitch += (float)mouseDelta.y * MOUSE_SENS;
+    float yawChange = glm::radians( -mouseDelta.x * MOUSE_SENS );
+    float pitchChange = glm::radians( mouseDelta.y * MOUSE_SENS );
 
-    if( m_pitch > 89 ) m_pitch = 89;
-    if( m_pitch < -89 ) m_pitch = -89;
+    glm::vec3 cameraRight = m_orientation * glm::vec3( 1.0f, 0.0f, 0.0f );
 
-    glm::vec3 direction( cos( glm::radians( m_yaw ) ) * cos( glm::radians( m_pitch ) ),
-                         sin( glm::radians( m_pitch ) ),
-                         sin( glm::radians( m_yaw ) * cos( glm::radians( m_pitch ) ) ) );
+    glm::quat yawRotation = glm::angleAxis( yawChange, g_upVector );
 
-    m_cameraFront = glm::normalize( direction );
+    glm::quat pitchRotation = glm::angleAxis( pitchChange, cameraRight );
+
+    m_orientation = glm::normalize( pitchRotation * yawRotation * m_orientation );
+
+    m_cameraFront = glm::normalize( m_orientation * glm::vec3( 0.0f, 0.0f, -1.0f ) );
 }
 
 void Camera::SetCameraFront( glm::vec3 &front )

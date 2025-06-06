@@ -24,17 +24,15 @@ public:
     ShaderProgram(const ShaderProgram&) = delete;
     ShaderProgram& operator=(const ShaderProgram&) = delete;
 
+    ShaderProgram( const std::string &vertexPath, const std::string &fragmentPath );
     ~ShaderProgram();
 
     void Use() const;
     void Set( const std::string &uniformName, const glm::mat4 &data ) const;
+    void Set( const std::string &uniformName, const glm::vec3 &data ) const;
     void Set( const std::string &uniformName, int value ) const;
 
-    static std::unique_ptr<ShaderProgram> Create( const char *vertexPath, const char *fragmentPath );
-
 private:
-    ShaderProgram( const char *vertexPath, const char *fragmentPath );
-
     uint32_t CreateShader( uint32_t type, const char *source ) const;
 
 protected:

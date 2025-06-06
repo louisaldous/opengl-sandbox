@@ -7,9 +7,12 @@ project(${APP_NAME})
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
-set(APP_DIR "${SRC_DIR}/app")
-set(ENGINE_DIR "${SRC_DIR}/engine")
+set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+set(DATA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/data/")
+set(APP_DIR "${SRC_DIR}/app/")
+set(ENGINE_DIR "${SRC_DIR}/engine/")
+
+add_compile_definitions(DATA_DIRECTORY="${DATA_DIR}")
 
 find_library(GLFW_LIBRARY
     NAMES glfw3 glfw3dll

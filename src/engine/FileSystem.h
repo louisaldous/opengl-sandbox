@@ -1,0 +1,8 @@
+#ifndef ENGINE_FILESYSTEM_H
+#define ENGINE_FILESYSTEM_H
+
+#ifndef DATA_DIRECTORY
+#define DATA_DIRECTORY ""
+#endif
+
+#endif // !ENGINE_FILESYSTEM_H

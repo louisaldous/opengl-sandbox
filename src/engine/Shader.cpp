@@ -8,7 +8,7 @@
 #include <sstream>
 #include <cassert>
 
-ShaderProgram::ShaderProgram( const char *vertexPath, const char *fragmentPath )
+ShaderProgram::ShaderProgram( const std::string &vertexPath, const std::string &fragmentPath )
 {
     std::ifstream vertexFStream;
     std::stringstream vertexStream;
@@ -77,15 +77,16 @@ void ShaderProgram::Set( const std::string &uniformName, const glm::mat4 &data )
     glUniformMatrix4fv( loc, 1, GL_FALSE, glm::value_ptr( data ) );
 }
 
+void ShaderProgram::Set( const std::string &uniformName, const glm::vec3 &data ) const
+{
+    GLint loc = glGetUniformLocation( m_id, uniformName.c_str() );
+    glUniform3f( loc, data.x, data.y, data.z );
+}
+
 void ShaderProgram::Set( const std::string &uniformName, int value ) const
 {
     GLint loc = glGetUniformLocation( m_id, uniformName.c_str() );
     glUniform1i( loc, value );
-}
-
-std::unique_ptr<ShaderProgram> ShaderProgram::Create( const char *vertexPath, const char *fragmentPath )
-{
-    return std::unique_ptr<ShaderProgram>( new ShaderProgram( vertexPath, fragmentPath ) );
 }
 
 uint32_t ShaderProgram::CreateShader( uint32_t type, const char *source ) const
