@@ -19,7 +19,7 @@ void OpenGLRenderer::Initialise()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow *window = glfwCreateWindow( 800, 600, "Main Window", nullptr, nullptr);
+    GLFWwindow *window = glfwCreateWindow( 1600, 1200, "Main Window", nullptr, nullptr);
     if( !window )
     {
         glfwTerminate();

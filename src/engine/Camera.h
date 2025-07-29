@@ -13,6 +13,7 @@ public:
     void SetCameraFront( glm::vec3 &front );
     void SetCameraPosition( glm::vec3 &pos );
 
+    glm::vec3 GetCameraPosition() const;
     glm::vec3 GetCameraFront() const;
     glm::mat4 GetViewMatrix() const;
 

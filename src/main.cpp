@@ -18,47 +18,47 @@
 #define PI 3.1415f
 
 static constexpr float s_cubeVertices [] = {
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
 
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
 
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
 
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
 
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
 
 static constexpr glm::vec3 lightPos( 1.2f, 1.0f, 2.0f );
@@ -71,30 +71,31 @@ int main()
     //
     // Set up buffers
 
-    uint32_t VAO, VBO;
-    glGenVertexArrays( 1, &VAO );
+    uint32_t cubeVAO, VBO;
+    glGenVertexArrays( 1, &cubeVAO );
     glGenBuffers( 1, &VBO );
-    glBindVertexArray( VAO );
+    glBindVertexArray( cubeVAO );
     glBindBuffer( GL_ARRAY_BUFFER, VBO );
     glBufferData( GL_ARRAY_BUFFER, sizeof( s_cubeVertices ), s_cubeVertices, GL_STATIC_DRAW );
-    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof( float ), (void *)0 );
+    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof( float ), (void *)0 );
     glEnableVertexAttribArray( 0 );
+    glVertexAttribPointer( 1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof( float ), (void *)(3 * sizeof( float )) );
+    glEnableVertexAttribArray( 1 );
 
     uint32_t lightVAO;
     glGenVertexArrays( 1, &lightVAO );
     glBindVertexArray( lightVAO );
     glBindBuffer( GL_ARRAY_BUFFER, VBO );
-    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof( float ), (void *)0 );
+    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof( float ), (void *)0 );
     glEnableVertexAttribArray( 0 );
-
 
 
     std::unique_ptr<ShaderProgram> lightingShader;
     std::unique_ptr<ShaderProgram> lightSourceShader;
     try
     {
-        lightingShader = std::make_unique<ShaderProgram>( DATA_DIRECTORY + std::string( "lightingShaderVert.glsl" ), DATA_DIRECTORY + std::string( "lightingShaderFrag.glsl" ) );
-        lightSourceShader = std::make_unique<ShaderProgram>( DATA_DIRECTORY + std::string( "lightSourceShaderVert.glsl" ), DATA_DIRECTORY + std::string( "lightSourceShaderFrag.glsl" ) );
+        lightingShader = std::make_unique<ShaderProgram>( DATA_DIRECTORY + std::string( "cubeShaderVert.glsl" ), DATA_DIRECTORY + std::string( "lightingShaderFrag.glsl" ) );
+        lightSourceShader = std::make_unique<ShaderProgram>( DATA_DIRECTORY + std::string( "defaultShaderVert.glsl" ), DATA_DIRECTORY + std::string( "lightSourceShaderFrag.glsl" ) );
     }
     catch( std::exception &e )
     {
@@ -108,7 +109,7 @@ int main()
     double lastTime = 0.0;
     double thisTime = 0.0;
 
-    glm::mat4 projection = glm::perspective( glm::radians( 45.0f ), 800.0f / 600.0f, 0.1f, 100.0f );
+    glm::mat4 projection = glm::perspective( glm::radians( 60.0f ), 4.0f / 3.0f, 0.1f, 100.0f );
 
     while( !renderer->WindowShouldClose() )
     {
@@ -125,6 +126,7 @@ int main()
 
         glm::mat4 view = camera.GetViewMatrix();
 
+
         //
         // light source cube
 
@@ -136,6 +138,7 @@ int main()
         lightSourceShader->Set( "model", model );
         lightSourceShader->Set( "projection", projection );
         lightSourceShader->Set( "view", view );
+
         glBindVertexArray( lightVAO );
         glDrawArrays( GL_TRIANGLES, 0, 36 );
 
@@ -151,7 +154,10 @@ int main()
         lightingShader->Set( "view", view );
         lightingShader->Set( "objectColour", glm::vec3( 1.0f, 0.5f, 0.31f ) );
         lightingShader->Set( "lightColour", glm::vec3( 1.0f, 1.0f, 1.0f ) );
-        glBindVertexArray( VAO );
+        lightingShader->Set( "lightPos", lightPos );
+        lightingShader->Set( "viewPos", camera.GetCameraPosition() );
+
+        glBindVertexArray( cubeVAO );
         glDrawArrays( GL_TRIANGLES, 0, 36 );
 
         if( InputManager::GetInstance()->KeyPressed( GLFW_KEY_ESCAPE ) ) break;
