@@ -8,6 +8,10 @@
 #include <sstream>
 #include <cassert>
 
+/*
+* TODO: Add default constructor and separate shader compilation into init method instead
+*/
+
 ShaderProgram::ShaderProgram( const std::string &vertexPath, const std::string &fragmentPath )
 {
     std::ifstream vertexFStream;

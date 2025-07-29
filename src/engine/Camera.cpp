@@ -9,6 +9,10 @@
 
 glm::vec3 g_upVector( 0.0f, 1.0f, 0.0f );
 
+/*
+* TODO: arbitrarily set where the camera is looking
+*/
+
 Camera::Camera()
 :   m_orientation( 1.0f, 0.0f, 0.0f, 0.0f ),
     m_cameraFront( 0.0f, 0.0f, -1.0f ),
