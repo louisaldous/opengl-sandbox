@@ -40,6 +40,7 @@ ShaderProgram::ShaderProgram( const std::string &vertexPath, const std::string &
 
     std::string vertexString = vertexStream.str();
     uint32_t vertexShader = CreateShader( GL_VERTEX_SHADER, vertexString.c_str() );
+
     std::string fragmentString = fragmentStream.str();
     uint32_t fragmentShader = CreateShader( GL_FRAGMENT_SHADER, fragmentString.c_str() );
 
@@ -75,22 +76,28 @@ void ShaderProgram::Use() const
     glUseProgram( m_id );
 }
 
-void ShaderProgram::Set( const std::string &uniformName, const glm::mat4 &data ) const
+void ShaderProgram::SetMat4( const std::string &uniformName, const glm::mat4 &data ) const
 {
     GLint loc = glGetUniformLocation( m_id, uniformName.c_str() );
     glUniformMatrix4fv( loc, 1, GL_FALSE, glm::value_ptr( data ) );
 }
 
-void ShaderProgram::Set( const std::string &uniformName, const glm::vec3 &data ) const
+void ShaderProgram::SetVec3( const std::string &uniformName, const glm::vec3 &data ) const
 {
     GLint loc = glGetUniformLocation( m_id, uniformName.c_str() );
     glUniform3f( loc, data.x, data.y, data.z );
 }
 
-void ShaderProgram::Set( const std::string &uniformName, int value ) const
+void ShaderProgram::SetInt32( const std::string &uniformName, int value ) const
 {
     GLint loc = glGetUniformLocation( m_id, uniformName.c_str() );
     glUniform1i( loc, value );
+}
+
+void ShaderProgram::SetFloat( const std::string &uniformName, float value ) const
+{
+    GLint loc = glGetUniformLocation( m_id, uniformName.c_str() );
+    glUniform1f( loc, value );
 }
 
 uint32_t ShaderProgram::CreateShader( uint32_t type, const char *source ) const

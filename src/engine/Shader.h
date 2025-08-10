@@ -28,9 +28,10 @@ public:
     ~ShaderProgram();
 
     void Use() const;
-    void Set( const std::string &uniformName, const glm::mat4 &data ) const;
-    void Set( const std::string &uniformName, const glm::vec3 &data ) const;
-    void Set( const std::string &uniformName, int value ) const;
+    void SetMat4( const std::string &uniformName, const glm::mat4 &data ) const;
+    void SetVec3( const std::string &uniformName, const glm::vec3 &data ) const;
+    void SetInt32( const std::string &uniformName, int value ) const;
+    void SetFloat( const std::string &uniformName, float value ) const;
 
 private:
     uint32_t CreateShader( uint32_t type, const char *source ) const;

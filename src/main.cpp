@@ -15,9 +15,19 @@
 #include <memory>
 #include <iostream>
 
-#define PI 3.1415f
 
-static constexpr float s_cubeVertices [] = {
+// TODO: remove this macro in favour of a packaging system
+#ifndef DATA_DIRECTORY
+#error "DATA_DIRECTORY is not defined. Please define it to specify where data is stored."
+#endif
+
+#define PI 3.1415f
+#define DATA(x) DATA_DIRECTORY + std::string(x) // TODO: remove me, temp macro for convenience
+
+static glm::vec3 s_lightPos( 1.2f, 1.0f, 2.0f );
+static glm::vec3 s_lightColour{ 0.75f, 0.75f, 0.75f };
+
+static float s_cubeVertices [] = {
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
      0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
      0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -61,8 +71,6 @@ static constexpr float s_cubeVertices [] = {
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
 
-static constexpr glm::vec3 lightPos( 1.2f, 1.0f, 2.0f );
-
 int main()
 {
     OpenGLRenderer* renderer = OpenGLRenderer::GetInstance();
@@ -94,8 +102,8 @@ int main()
     std::unique_ptr<ShaderProgram> lightSourceShader;
     try
     {
-        lightingShader = std::make_unique<ShaderProgram>( DATA_DIRECTORY + std::string( "cubeShaderVert.glsl" ), DATA_DIRECTORY + std::string( "lightingShaderFrag.glsl" ) );
-        lightSourceShader = std::make_unique<ShaderProgram>( DATA_DIRECTORY + std::string( "defaultShaderVert.glsl" ), DATA_DIRECTORY + std::string( "lightSourceShaderFrag.glsl" ) );
+        lightingShader = std::make_unique<ShaderProgram>( DATA( "shaders/cubeVert.glsl" ), DATA( "shaders/cubeFrag.glsl" ) );
+        lightSourceShader = std::make_unique<ShaderProgram>( DATA( "shaders/lightVert.glsl" ), DATA( "shaders/lightFrag.glsl" ) );
     }
     catch( std::exception &e )
     {
@@ -131,13 +139,14 @@ int main()
         // light source cube
 
         glm::mat4 model = glm::mat4( 1.0f );
-        model = glm::translate( model, lightPos );
+        model = glm::translate( model, s_lightPos );
         model = glm::scale(model, glm::vec3(0.2f)); 
 
         lightSourceShader->Use();
-        lightSourceShader->Set( "model", model );
-        lightSourceShader->Set( "projection", projection );
-        lightSourceShader->Set( "view", view );
+        lightSourceShader->SetMat4( "model", model );
+        lightSourceShader->SetMat4( "projection", projection );
+        lightSourceShader->SetMat4( "view", view );
+        lightSourceShader->SetVec3( "lightColour", s_lightColour );
 
         glBindVertexArray( lightVAO );
         glDrawArrays( GL_TRIANGLES, 0, 36 );
@@ -149,13 +158,21 @@ int main()
         model = glm::mat4( 1.0f );
 
         lightingShader->Use();
-        lightingShader->Set( "model", model );
-        lightingShader->Set( "projection", projection );
-        lightingShader->Set( "view", view );
-        lightingShader->Set( "objectColour", glm::vec3( 1.0f, 0.5f, 0.31f ) );
-        lightingShader->Set( "lightColour", glm::vec3( 1.0f, 1.0f, 1.0f ) );
-        lightingShader->Set( "lightPos", lightPos );
-        lightingShader->Set( "viewPos", camera.GetCameraPosition() );
+        lightingShader->SetMat4( "model", model );
+        lightingShader->SetMat4( "projection", projection );
+        lightingShader->SetMat4( "view", view );
+
+        lightingShader->SetVec3( "material.m_ambient", glm::vec3( 1.0f, 0.5f, 0.31f ) );
+        lightingShader->SetVec3( "material.m_diffuse", glm::vec3( 1.0f, 0.5f, 0.31f ) );
+        lightingShader->SetVec3( "material.m_specular", glm::vec3( 0.5f, 0.5f, 0.5f ) );
+        lightingShader->SetFloat( "material.m_shininess", 32.0f );
+
+        lightingShader->SetVec3( "light.m_ambient", glm::vec3( 0.2f, 0.2f, 0.2f ) );
+        lightingShader->SetVec3( "light.m_diffuse", s_lightColour );
+        lightingShader->SetVec3( "light.m_specular", glm::vec3( 1.0f, 1.0f, 1.0f ) );
+        lightingShader->SetVec3( "light.m_position", s_lightPos );
+
+        lightingShader->SetVec3( "viewPos", camera.GetCameraPosition() );
 
         glBindVertexArray( cubeVAO );
         glDrawArrays( GL_TRIANGLES, 0, 36 );
