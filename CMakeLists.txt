@@ -20,14 +20,20 @@ find_library(GLFW_LIBRARY
     NO_DEFAULT_PATH
 )
 
-file(GLOB APP_SOURCES 
-    "${APP_DIR}/*.cpp"
+set( 
+    APP_SOURCES
+    "${APP_DIR}/App.cpp"
+    "${APP_DIR}/Player.cpp"
 )
 
-file(GLOB ENGINE_SOURCES 
-    "${ENGINE_DIR}/*.cpp"
-    "${ENGINE_DIR}/contrib/src/*.cpp"
-    "${ENGINE_DIR}/contrib/src/*.c"
+set(
+    ENGINE_SOURCES 
+    "${ENGINE_DIR}/Camera.cpp"
+    "${ENGINE_DIR}/InputManager.cpp"
+    "${ENGINE_DIR}/Renderer.cpp"
+    "${ENGINE_DIR}/Shader.cpp"
+    "${ENGINE_DIR}/contrib/src/stb_impl.cpp"
+    "${ENGINE_DIR}/contrib/src/glad.c"
 )
 
 add_executable(${APP_NAME} ${SRC_DIR}/main.cpp ${APP_SOURCES} ${ENGINE_SOURCES})
